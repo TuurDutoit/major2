@@ -7,14 +7,80 @@
     <meta name="description" content="Verlet integration test" />
     <meta name="keywords" content="verlet, integration, test" />
     <meta name="author" content="Tuur Dutoit" />
-    <link rel="stylesheet" type="text/css" href="css/screen.css" />
-    <script type="text/javascript" src="js/verlet.js"></script>
-    
-    
-    <title>Verlet integration test</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/screen.css" />
+    <title>Salmon</title>
   </head>
   <body>
-    <canvas id="interactive-fish"></canvas>
+    <header class="header">
+      <div class="header-container">
+        <img class="header-img" src="assets/img/header.jpg" alt="Salmon" />
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="pages/menu.html">Menu</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-home container">
+      <article class="menu">
+        <div class="quote">&rdquo;</div>
+        <div class="content">
+          <blockquote>
+            Zalm is onze passie. Gekookt, gestoomd, in de oven of in de pan, we kunnen het allemaal!
+          </blockquote>
+          <cite>&mdash; Salmon Team</cite>
+          <a class="button" href="pages/menu.html">Bekijk het menu</a>
+        </div>
+        <img class="illustration" src="assets/img/home-menu.jpg" alt="Salmon Pop" />
+      </article>
+
+      <canvas id="interactive-fish"></canvas>
+
+      <article class="contact">
+        <div class="quote">&ldquo;</div>
+        <div class="content">
+          <blockquote>
+            I think we’re going to the moon because it is in the nature of the human being to face challenges. It’s by the nature of his deep inner soul we’re required to do these things, like salmon swim upstream.
+          </blockquote>
+          <cite>&mdash; Neil Armstrong</cite>
+          <a class="button" href="pages/contact.html">Kom eens proeven</a>
+        </div>
+        <img class="illustration" src="assets/img/home-contact.jpg" alt="Springende zalm" />
+      </article>
+    </main>
+
+    <footer>
+      <div class="container">
+        <table class="column hours">
+          <tr>
+            <th rowspan="2">di-zo:</th>
+            <td>12h00 - 14h00</td>
+          </tr>
+          <tr>
+            <td>18h00 - 23h00</td>
+          </tr>
+          <tr>
+            <th>ma:</th>
+            <td>gesloten</td>
+          </tr>
+        </table>
+        <div class="column contact">
+          <a class="item" href="mailto:info@salmon.be">info@salmon.be</a><br />
+          +32 494 56 29 37
+        </div>
+        <address class="column">
+          Meerweg-Oost 256<br />
+          5489 Vierwoudstreek, At
+        </address>
+      </div>
+      <div class="copyright">&copy; 2016 Tuur Dutoit</div>
+    </footer>
+
+    <script type="text/javascript" src="assets/js/verlet.js"></script>
     <script type="text/javascript" src="assets/js/bundle.js"></script>
   </body>
 </html>
