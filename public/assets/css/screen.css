@@ -31,6 +31,26 @@ body {
   color: #898989;
 }
 
+h1 {
+  font-size: 3.6em;
+}
+
+p {
+  font-size: 1.8em;
+}
+
+article {
+  position: relative;
+}
+
+article h1 {
+  margin: 0;
+}
+
+article p {
+  margin-top: 12px;
+}
+
 
 .container {
   width: 960px;
@@ -39,6 +59,32 @@ body {
 
 .container.small {
   width: 850px;
+}
+
+.container.extra-small {
+  width: 630px;
+}
+
+
+.right {
+  text-align: right;
+}
+
+
+.bg-title {
+  position: absolute;
+  top: -95px;
+  left: -60px;
+  z-index: -1;
+  color: #FDE9E7;
+  font-size: 300px;
+  font-weight: bold;
+  letter-spacing: -13px;
+}
+
+.right .bg-title {
+  left: auto;
+  right: -30px;
 }
 
 
@@ -53,6 +99,8 @@ body {
   border: 3px solid #F9AAA2;
   border-radius: 8px;
   background-color: white;
+  outline: none;
+  cursor: pointer;
   transition: all .1s;
 }
 
@@ -69,17 +117,6 @@ body {
 
 .button:active {
   transform: translateY(5px);
-}
-
-
-.bg-title {
-  position: absolute;
-  top: -95px;
-  z-index: -1;
-  color: #FDE9E7;
-  font-size: 300px;
-  font-weight: bold;
-  letter-spacing: -13px;
 }
 
 
@@ -110,14 +147,8 @@ header a:active, footer a:active {
 
 
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-bottom: 55px;
   background-color: #F9AAA2;
-}
-
-.header-container {
-  width: 630px;
 }
 
 .header-img {
@@ -125,15 +156,10 @@ header a:active, footer a:active {
   width: 100%;
 }
 
-.header nav {
-  margin-bottom: 55px;
-}
-
 .header nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -161,7 +187,6 @@ header a:active, footer a:active {
 footer {
   padding: 65px 0 30px 0;
   background-color: #F9AAA2;
-  width: 100%;
   color: white;
 }
 
@@ -178,10 +203,6 @@ footer .column {
 footer th {
   vertical-align: top;
   text-align: left;
-}
-
-footer td {
-  height: 32px;
 }
 
 footer .contact {
@@ -217,7 +238,6 @@ footer .copyright {
 
 .page-home article {
   display: flex;
-  position: relative;
 }
 
 .page-home .menu {
@@ -316,43 +336,25 @@ footer .copyright {
 }
 
 .page-menu article {
-  position: relative;
-}
-
-.page-menu article {
   display: flex;
   align-items: center;
   margin-top: 45px;
 }
 
-.page-menu article:nth-child(even) {
+.page-menu .right {
   flex-direction: row-reverse;
 }
 
-.page-menu article:nth-child(even) .content {
-  text-align: right;
-}
-
-.page-menu article:nth-child(odd) .bg-title {
+.page-menu .bg-title {
   left: -60px;
 }
 
-.page-menu article:nth-child(even) .bg-title {
+.page-menu .right .bg-title {
   right: -31px;
 }
 
 .page-menu .content {
   width: 364px;
-}
-
-.page-menu h1 {
-  margin: 0;
-  font-size: 3.6em;
-}
-
-.page-menu p {
-  margin-top: 12px;
-  font-size: 1.8em;
 }
 
 .page-menu .menu-04 {
@@ -408,6 +410,52 @@ footer .copyright {
 
 
 
+/*
+ * ABOUT
+ */
+
+
+.page-about {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.page-about article {
+  width: 720px;
+  margin-top: 80px;
+}
+
+.page-about .right {
+  align-self: flex-end;
+  margin-top: 115px;
+}
+
+.page-about .bg-title {
+  font-size: 23em;
+  left: -52px;
+  top: -77px;
+}
+
+.page-about .right .bg-title {
+  left: auto;
+}
+
+.page-about .button {
+  margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  * CONTACT
@@ -416,18 +464,6 @@ footer .copyright {
 
 .page-contact {
   padding-top: 50px;
-}
-
-.page-contact article {
-  position: relative;
-}
-
-.page-contact h1 {
-  font-size: 3.6em;
-}
-
-.page-contact .bg-title {
-  left: -48px;
 }
 
 .page-contact label, .page-contact address {
@@ -465,6 +501,7 @@ footer .copyright {
 
 .page-contact textarea {
   min-height: 110px;
+  max-width: 400px;
 }
 
 .page-contact button {
@@ -482,7 +519,7 @@ footer .copyright {
   position: relative;
   top: 94px;
   width: 100%;
-  z-index: -2;
+  z-index: -1;
 }
 
 .page-contact .address .inner {
@@ -508,6 +545,18 @@ footer .copyright {
 
 
 
+/*
+ * FORM RESULTS
+ */
 
 
+.page-results {
+  padding: 65px 0;
+  font-size: 1.8em;
+}
 
+.page-results pre {
+  padding: 5px 0 5px 15px;
+  border-left: 5px solid #B5B5B5;
+  font-family: Quicksand;
+}

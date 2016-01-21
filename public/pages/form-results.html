@@ -19,53 +19,16 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <main class="page-contact">
-      <article class="form container">
-        <div class="bg-title">Hallo</div>
-        <header><h1>Contacteer ons</h1></header>
-
-        <form class="contact-form" action="form-results.html">
-          <div class="column">
-            <div class="input-group">
-              <label for="name">Naam</label>
-              <input class="input" type="text" name="name" id="name" required />
-            </div>
-            <div class="input-group">
-              <label for="email">E-mail adres</label>
-              <input class="input" type="email" name="email" id="email" required />
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="input-group">
-              <label for="message">Boodschap</label>
-              <textarea class="input" name="message" id="message" required></textarea>
-            </div>
-
-            <button class="button" type="submit">Verzenden</button>
-          </div>
-        </form>
-      </article>
-
-      <article class="address">
-        <img class="panorama" src="../assets/img/panorama.jpg" alt="Een panoramisch zicht op het Vierwoudstrekenmeer" />
-        <div class="container">
-          <div class="inner">
-            <div class="bg-title">Adres</div>
-            <header><h1>Hier kan je ons vinden</h1></header>
-            <address>
-              Meerweg-Oost 256<br />
-              5489 Vierwoudstreek, Oostenrijk
-            </address>
-          </div>
-        </div>
-      </article>
+    <main class="page-results container extra-small">
+      <p><strong class="name">Tuur Dutoit</strong>, we hebben het volgende bericht van jou ontvangen:</p>
+      <pre class="message">Hallo, ik ben Tuur.</pre>
+      <p>We sturen zo snel mogelijk een antwoord naar <strong class="email">me@tuurdutoit.be</strong>.</p>
     </main>
 
     <footer>
@@ -94,5 +57,7 @@
       </div>
       <div class="copyright">&copy; 2016 Tuur Dutoit</div>
     </footer>
+
+    <script type="text/javascript" src="../assets/js/form-results.js"></script>
   </body>
 </html>
