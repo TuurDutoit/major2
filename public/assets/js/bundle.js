@@ -18,7 +18,7 @@ var isDone = function(a, b) {
 
 
 var add = function(a, b) {
-  segments.push([points[a], points[b]]);
+  segments.push([a, b]);
 }
 
 
@@ -71,12 +71,6 @@ var segments = convert(triangles);
 
 module.exports = segments;
 },{"../particles/points":10,"./convert":2,"delaunay-fast":18}],5:[function(require,module,exports){
-module.exports = function(x1, y1, x2, y2) {
-  var a = x2 - x1;
-  var b = y2 - y1;
-  return Math.sqrt(a*a + b*b);
-}
-},{}],6:[function(require,module,exports){
 require("./styles");
 var world = require("./world");
 var raf = require("raf-component");
@@ -93,17 +87,18 @@ var frame = function() {
 }
 
 frame();
-},{"./styles":14,"./world":16,"delta-timer":19,"raf-component":20}],7:[function(require,module,exports){
-var r = require("../values").scale;
-var basePoints = [
-  [0, 0],
-  [1038 * r, 115 * r],
-  [0, 230 * r]
+},{"./styles":14,"./world":16,"delta-timer":19,"raf-component":20}],6:[function(require,module,exports){
+module.exports = [
+  [0, 34],
+  [0, 193],
+  [960, 128]
 ]
+},{}],7:[function(require,module,exports){
+var strokePoints = require("./stroke");
+var basePoints = require("./base");
 
-
-module.exports = basePoints;
-},{"../values":15}],8:[function(require,module,exports){
+module.exports = strokePoints.concat(basePoints);
+},{"./base":6,"./stroke":12}],8:[function(require,module,exports){
 var points = require("./points");
 var particles = [];
 
@@ -122,87 +117,128 @@ module.exports = function(x, y) {
 }
 },{"./scrapbook":11}],10:[function(require,module,exports){
 var bridson = require("bridson");
-var strokePoints = require("./stroke");
-var isInside = require("./isInside");
 var v = require("../values");
+var isInside = require("./isInside");
+var strokePoints = require("./full-stroke");
+
+
+
 
 module.exports = bridson({
   r: 1.5 * v.distance,
   isInside: isInside,
-  start: strokePoints
+  start: strokePoints,
+  iterations: true
 });
-},{"../values":15,"./isInside":9,"./stroke":12,"bridson":17}],11:[function(require,module,exports){
+},{"../values":15,"./full-stroke":7,"./isInside":9,"bridson":17}],11:[function(require,module,exports){
 var v = require("../values");
 var canvas = document.createElement("canvas");
+var canvas = require("../canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = v.width;
 canvas.height = v.height;
-
-ctx.strokeStyle = "#000000";
-ctx.lineWidth = 1;
-ctx.setLineDash([1, v.distance]);
+ctx.translate(0, 20);
 
 ctx.beginPath();
 ctx.moveTo(0, 0);
-ctx.bezierCurveTo(104, 30, 141, 85, 200, 85);
-ctx.bezierCurveTo(200, 85, 261, 85, 438, -20, 710, -20);
-ctx.bezierCurveTo(710, -20, 905, -20, 1138, 111, 1138, 116);
-ctx.bezierCurveTo(1138, 116, 1138, 122, 904, 253, 710, 253);
-ctx.bezierCurveTo(710, 253, 438, 253, 260, 148, 200, 148);
-ctx.bezierCurveTo(200, 148, 141, 148, 115, 198, 0, 232);
-ctx.bezierCurveTo(0, 232, 75, 120, 75, 112, 0, 0);
-ctx.stroke();
+ctx.bezierCurveTo(104,  30,  141,  85,  200,  85);
+ctx.bezierCurveTo(261,  85,  438,  -20, 710,  -20);
+ctx.bezierCurveTo(905,  -20, 1138, 111, 1138, 116);
+ctx.bezierCurveTo(1138, 122, 904,  253, 710,  253);
+ctx.bezierCurveTo(438,  253, 260,  148, 200,  148);
+ctx.bezierCurveTo(141,  148, 115,  198, 0,    232);
+ctx.bezierCurveTo(75,   120, 75,   112, 0,    0);
 
 
 module.exports = ctx;
-},{"../values":15}],12:[function(require,module,exports){
-var v = require("../values");
-var dist = require("../distance");
-var basePoints = require("./base");
-var ctx = require("./scrapbook");
+},{"../canvas":1,"../values":15}],12:[function(require,module,exports){
+var values = require("../values");
+var r = values.scale;
 
+var height = 294;
+var bottomPoints = [];
+var topPoints = [
+  [46, 98],
+  [36, 74],
+  [23, 51],
+  [9, 30],
+  [26, 27],
+  [51, 38],
+  [73, 49],
+  [96, 62],
+  [119, 75],
+  [143, 86],
+  [168, 90],
+  [194, 87],
+  [219, 79],
+  [244, 69],
+  [269, 61],
+  [294, 51],
+  [318, 44],
+  [343, 36],
+  [369, 29],
+  [393, 23],
+  [419, 18],
+  [446, 13],
+  [471, 9],
+  [497, 6],
+  [523, 3],
+  [549, 0],
+  [575, 0],
+  [602, 0],
+  [628, 1],
+  [653, 3],
+  [679, 7],
+  [705, 12],
+  [731, 18],
+  [756, 26],
+  [781, 33],
+  [805, 41],
+  [830, 51],
+  [854, 61],
+  [878, 71],
+  [903, 82],
+  [926, 94],
+  [948, 106]
+]
 
-var img = ctx.getImageData(0, -20, 1138, 253);
-var data = img.data;
-var width = data.width;
-var height = img.height;
-var points = [];
-
-for(var i = 0, len = data.length; i < len; i += 4) {
-  if(data[i] === 0) {
-    points.push([i % width, Math.floor(i / height)]);
-  }
+for(var i = 0, len = topPoints.length; i < len; i++) {
+  var p = topPoints[i];
+  bottomPoints.push([p[0], height - p[1]]);
 }
 
-for(var i = 0; i < points.length; i++) {
-  for(var j = 0, len = basePoints.length; j < len; j++) {
-    if(dist(points[i][0], points[i][1], basePoints[j][0], basePoints[j][1]) < v.distance) {
-      points.splice(i, 1);
-    }
-  }
+var points = topPoints.concat(bottomPoints);
+
+for(var i = 0, len = points.length; i < len; i++) {
+  var p = points[i];
+  p[0] *= r;
+  p[1] *= r;
 }
-
-points.push.apply(points, basePoints);
-
 
 
 module.exports = points;
-},{"../distance":5,"../values":15,"./base":7,"./scrapbook":11}],13:[function(require,module,exports){
+},{"../values":15}],13:[function(require,module,exports){
 var basePoints = require("./particles/base");
 var points = require("./particles/points");
 var particles = require("./particles");
 var pins = [];
+console.log("base points:", basePoints.length);
+console.log("points:", points.length);
+console.log("particles:", particles.length);
+console.log("Bridson iterations:", points.iterations);
+console.log("");
+
 
 for(var i = 0, len = basePoints.length; i < len; i++) {
   var point = basePoints[i];
   var index = points.indexOf(point);
-  console.log(index);
+  console.log(i + "," + index);
   var particle = particles[index];
   pins.push(new PinConstraint(particle, particle.pos));
 }
 
 module.exports = pins;
-},{"./particles":8,"./particles/base":7,"./particles/points":10}],14:[function(require,module,exports){
+},{"./particles":8,"./particles/base":6,"./particles/points":10}],14:[function(require,module,exports){
 var v = require("./values");
 var ctx = require("./canvas").getContext("2d");
 
@@ -232,8 +268,8 @@ Particle.prototype.draw = function(ctx) {
 var canvas = require("./canvas");
 var ctx = canvas.getContext("2d");
 
-var standardWidth = 1050;
-var standardHeight = 280;
+var standardWidth = 960;
+var standardHeight = 227;
 var ratio = standardHeight / standardWidth;
 var fullWidth = canvas.clientWidth;
 var fullHeight = fullWidth * ratio;
@@ -248,10 +284,10 @@ var paddingY = fullHeight * paddingYRatio;
 var width = fullWidth - (2 * paddingX);
 var height = fullHeight - (2 * paddingY);
 var scale = width / standardWidth;
-ctx.translate(paddingX, paddingY);
+//ctx.translate(paddingX, paddingY);
 
 var distance = 30;
-var radius = 7;
+var radius = 2;
 var stiffness = 1;
 var lineColor = "#000000";
 var lineWidth = 2;
@@ -278,6 +314,7 @@ module.exports = {
   pointColor: pointColor
 }
 },{"./canvas":1}],16:[function(require,module,exports){
+var v = require("./values");
 var canvas = require("./canvas");
 var particles = require("./particles");
 var constraints = require("./constraints");
@@ -291,7 +328,7 @@ world.composites.push(composite);
 
 
 module.exports = world;
-},{"./canvas":1,"./constraints":3,"./particles":8,"./pins":13}],17:[function(require,module,exports){
+},{"./canvas":1,"./constraints":3,"./particles":8,"./pins":13,"./values":15}],17:[function(require,module,exports){
 var random = require("randf");
 var randInt = require("random-int");
 
@@ -511,7 +548,7 @@ module.exports = function(options) {
   // Starting point
   if(options.start && typeof options.start[0] === "object") {
     // Start with an array of active points
-    for(var i = 0, len = options.start; i < len; i++) {
+    for(var i = 0, len = options.start.length; i < len; i++) {
       add(options.start[i]);
     }
   }
@@ -899,4 +936,4 @@ module.exports = function (min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-},{}]},{},[6]);
+},{}]},{},[5]);

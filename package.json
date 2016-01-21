@@ -11,13 +11,15 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
+    "grunt-contrib-connect": "^0.11.2",
     "grunt-contrib-uglify": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1"
   },
   "dependencies": {
-    "bridson": "0.0.2",
+    "bridson": "0.0.3",
     "delaunay-fast": "^1.0.1",
     "delta-timer": "0.0.0",
-    "raf-component": "^1.1.2"
+    "raf-component": "^1.1.2",
+    "space-grid": "0.0.1"
   }
 }

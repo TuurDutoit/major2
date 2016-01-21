@@ -30,8 +30,13 @@ module.exports = function(grunt) {
     },
     watch: {
       dev: {
-        files: ["lib/*.js"],
+        files: ["lib/**/*.js"],
         tasks: ["browserify:dev"]
+      }
+    },
+    connect: {
+      dev: {
+
       }
     }
   });
@@ -40,8 +45,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-contrib-connect");
   
-  grunt.registerTask("default", ["watch:dev"]);
+  grunt.registerTask("default", ["connect:dev", "watch:dev"]);
   grunt.registerTask("dist", ["browserify:dist", "uglify:dist"]);
   
 }
