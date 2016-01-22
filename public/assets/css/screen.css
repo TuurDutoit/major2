@@ -44,11 +44,7 @@ article {
 }
 
 article h1 {
-  margin: 0;
-}
-
-article p {
-  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 
@@ -99,6 +95,7 @@ article p {
   border: 3px solid #F9AAA2;
   border-radius: 8px;
   background-color: white;
+  background-color: rgba(255, 255, 255, .6);
   outline: none;
   cursor: pointer;
   -webkit-transition: all .1s;
@@ -280,7 +277,7 @@ footer .copyright {
 
 .page-home .quote {
   position: absolute;
-  top: -47px;
+  top: -30px;
   font-family: Helvetica, sans-serif;
   font-size: 25em;
 
@@ -337,11 +334,9 @@ footer .copyright {
   font-weight: bold;
 }
 
-
-
-#interactive-fish {
+.page-home .salmon {
   width: 100%;
-  margin: 100px 0;
+  margin: 200px 0 130px;
 }
 
 
@@ -391,11 +386,8 @@ footer .copyright {
 }
 
 .page-menu .content {
+  position: relative;
   width: 364px;
-}
-
-.page-menu .menu-04 {
-  margin-top: 24px;
 }
 
 .page-menu .menu-01 img {
@@ -406,8 +398,16 @@ footer .copyright {
   margin-right: 12px;
 }
 
+.page-menu-03 {
+  margin-top: 10px;
+}
+
 .page-menu .menu-03 img {
   margin-left: 32px;
+}
+
+.page-menu .menu-04 {
+  margin-top: 24px;
 }
 
 .page-menu .menu-04 img {
@@ -416,6 +416,12 @@ footer .copyright {
 
 .page-menu .menu-05 img {
   margin-left: 48px;
+}
+
+.page-menu .menu-06,
+.page-menu .menu-07,
+.page-menu .menu-08 {
+  margin-top: 90px;
 }
 
 .page-menu .menu-06 img {
@@ -462,19 +468,25 @@ footer .copyright {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-bottom: 100px;
 }
 
 .page-about article {
-  width: 720px;
   margin-top: 80px;
 }
 
 .page-about .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   -webkit-align-self: flex-end;
       -ms-flex-item-align: end;
           align-self: flex-end;
-  margin-top: 115px;
+  margin-top: 160px;
+}
+
+.page-about .content {
+  position: relative;
+  width: 670px;
 }
 
 .page-about .bg-title {
@@ -489,6 +501,48 @@ footer .copyright {
 
 .page-about .button {
   margin-top: 25px;
+}
+
+.page-about .dishes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-about .dishes.top {
+  margin-bottom: 50px;
+}
+
+.page-about .dishes.bottom {
+  margin-top: 20px;
+}
+
+.page-about .address {
+  width: 100%;
+  margin-top: 130px;
+}
+
+.page-about .address img {
+  position: relative;
+  top: 40px;
+  width: 100%;
+  z-index: -1;
+}
+
+.page-about .address .inner {
+  position: absolute;
+  top: 0;
+}
+
+.page-about .address address {
+  font-size: 2.4em;
+  line-height: 1.5em;
+}
+
+.page-about .address .bg-title {
+  color: #F9AAA2;
+  opacity: 0.35;
 }
 
 
@@ -509,7 +563,7 @@ footer .copyright {
 
 
 .page-contact {
-  padding-top: 50px;
+  padding: 100px 0;
 }
 
 .page-contact label, .page-contact address {
@@ -563,29 +617,6 @@ footer .copyright {
 
 
 
-.page-contact .address {
-  margin-top: 130px;
-}
-
-.page-contact .address img {
-  position: relative;
-  top: 94px;
-  width: 100%;
-  z-index: -1;
-}
-
-.page-contact .address .inner {
-  position: absolute;
-  top: 0;
-}
-
-.page-contact .address .bg-title {
-  color: #F9AAA2;
-  opacity: 0.35;
-}
-
-
-
 
 
 
@@ -604,11 +635,16 @@ footer .copyright {
 
 .page-results {
   padding: 65px 0;
-  font-size: 1.8em;
 }
 
 .page-results pre {
+  margin: 25px 0;
   padding: 5px 0 5px 15px;
   border-left: 5px solid #B5B5B5;
   font-family: Quicksand;
+  font-size: 1.8em;
+}
+
+.page-results strong {
+  font-weight: bold;
 }
