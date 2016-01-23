@@ -495,10 +495,6 @@ footer .copyright {
   top: -77px;
 }
 
-.page-about .right .bg-title {
-  left: auto;
-}
-
 .page-about .button {
   margin-top: 25px;
 }
@@ -516,6 +512,26 @@ footer .copyright {
 
 .page-about .dishes.bottom {
   margin-top: 20px;
+}
+
+.page-about .right {
+  justify-content: space-between;
+}
+
+.page-about .family-photo {
+  z-index: -1;
+  margin-top: 20px;
+  background: #F9AAA2;
+}
+
+.page-about .right .content {
+  width: 491px;
+}
+
+.page-about .right .bg-title {
+  color: #F9AAA2;
+  opacity: .35;
+  left: auto;
 }
 
 .page-about .address {
